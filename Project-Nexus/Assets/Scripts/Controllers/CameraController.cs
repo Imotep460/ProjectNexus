@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     [Header("Spectator")]
     public float moveSpeedSpectator;    // How fast does a Player move the camera as a Spectator.
 
-    private bool isSpectator = true;   // A bool to keep track of whether or not a Player is currently a Spectator.
+    private bool isSpectator;           // A bool to keep track of whether or not a Player is currently a Spectator.
 
     // Store a PLayers current rotationvalues.
     private float currentXRot;
@@ -44,6 +44,7 @@ public class CameraController : MonoBehaviour
         // Check for Spectator status.
         if (isSpectator)
         {
+            // Camera controls if the Player is a Spectator.
             // Rotate the Camera
             transform.rotation = Quaternion.Euler(-currentYRot, currentXRot, 0); // currentYRot is negative so that it is not flipped.
                                                                                  // Incase a Player want inverted controls simply change currentYRot to positive.
@@ -71,7 +72,13 @@ public class CameraController : MonoBehaviour
         }
         else
         {
+            // Camera controls if the Player is NOT a Spectator.
 
+            // Rotate the Camera vertically.
+            transform.localRotation = Quaternion.Euler(-currentYRot, 0, 0);
+
+            // Rotate the Player Object Horizontally.
+            transform.parent.rotation = Quaternion.Euler(0, currentXRot, 0);
         }
     }
 }
