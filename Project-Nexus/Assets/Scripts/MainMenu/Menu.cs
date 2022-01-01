@@ -119,4 +119,66 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         NetworkController.instance.CreateLobby(lobbyNameInput.text);
     }
+
+    /* ------- LOBBY SCREEN -------*/
+
+    /// <summary>
+    /// Switch to the LobbyScreen, and use a RPC call to tell every other Player to update their LobbyUI.
+    /// This Method is only called on the Client Terminal.
+    /// </summary>
+    public override void OnJoinedRoom()
+    {
+        SetScreen(LobbyScreen);
+        // When the Player has joined a Lobby tell all the other Players to update their LobbyUi.
+        photonView.RPC("UpdateLobbyUI", RpcTarget.All);
+    }
+
+    /// <summary>
+    /// Update the Lobby UI when a player leaves the Lobby.
+    /// </summary>
+    /// <param name="otherPlayer"></param>
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        UpdateLobbyUI();
+    }
+
+    /// <summary>
+    /// Update the Lobby UI to show connected Players and disable Start Game button if the Player is NOT the Lobby host.
+    /// This Method is remote-callable as a PunRPC.
+    /// </summary>
+    [PunRPC]
+    private void UpdateLobbyUI()
+    {
+        // Check if the Player is the Lobby host and either disable or enable the Start Game button accordingly.
+        startGameButton.interactable = PhotonNetwork.IsMasterClient;
+
+        // Display all the Players currently in the Lobby
+        playerListText.text = "";
+
+        foreach (Player player in PhotonNetwork.PlayerList)
+        {
+            playerListText.text += player.NickName + "\n";
+        }
+
+        // Update the Lobby info text.
+        lobbyInfoText.text = "<b>Lobby Name</b>\n" + PhotonNetwork.CurrentRoom.Name;
+    }
+
+    public void OnStartGameButton()
+    {
+        // Hide the Lobby so people cannot se or join the Lobby when the game has begun.
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
+
+        // Tell all the Players in the Lobby to load into the Game scene.
+        NetworkController.instance.photonView.RPC("ChangeScene", RpcTarget.All, "Battlefield");
+    }
+
+    public void OnLeaveLobbyButton()
+    {
+        // Disconnect the Player from the Lobby.
+        PhotonNetwork.LeaveRoom();
+        // Return to the MainMenuScreen.
+        SetScreen(mainMenuScreen);
+    }
 }

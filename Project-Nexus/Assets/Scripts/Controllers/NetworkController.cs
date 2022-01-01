@@ -78,8 +78,10 @@ public class NetworkController : MonoBehaviourPunCallbacks
     /// <summary>
     /// Load a new Scene.
     /// The Scene to Load is given as input.
+    /// This Method is remote-callable.
     /// </summary>
     /// <param name="sceneName">The name of the Scene to Load.</param>
+    [PunRPC]
     public void ChangeScene(string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName); // Load a new Scene.
