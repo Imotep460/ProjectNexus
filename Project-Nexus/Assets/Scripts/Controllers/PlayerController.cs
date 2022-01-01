@@ -1,15 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviourPun
 {
+    [Header("PlayerInfo")]
+    public int playerId;
+
     [Header("PlayerStats")]
     public float playerMoveSpeed;
     public float playerJumpForce;
 
     [Header("PlayerComponents")]
     public Rigidbody rigidbody;
+    public Player photonPlayer;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="player"></param>
+    [PunRPC]
+    public void Initialize(Player player)
+    {
+        // Get the Unique Player Id Number.
+        playerId = player.ActorNumber;
+        // Set the reference to the Player Object.
+        photonPlayer = player;
+
+        // Add the Player to the Player Array from the GameManager. NOTE: Id's start at 1.
+        GameManager.gameInstance.players[playerId - 1] = this;
+
+        // Check if this is a romote Player or if the Player being Initialized is the local Player.
+        if (!photonView.IsMine)
+        {
+            // Disable the Cameraobject if it is NOT the local Player.
+            GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            // Disable the physics on the remote Player object.
+            rigidbody.isKinematic = true;
+        }
+    }
 
 
     // Update is called every frame.
