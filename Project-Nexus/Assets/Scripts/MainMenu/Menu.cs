@@ -66,6 +66,12 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
         // Enable the target screen.
         targetScreen.SetActive(true);
+
+        // If a Player moves to the LobbyBrowserScreen automatically Update the LobbyBrowser UI
+        if (targetScreen == LobbyBrowserScreen)
+        {
+            UpdateLobbyBrowserUI();
+        }
     }
 
     /// <summary>
@@ -106,7 +112,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     /// <summary>
     /// Returns the Player to the MainMenuScreen.
     /// </summary>
-    public void OnMainManuButton()
+    public void OnMainMenuButton()
     {
         SetScreen(mainMenuScreen);
     }
@@ -180,5 +186,83 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         PhotonNetwork.LeaveRoom();
         // Return to the MainMenuScreen.
         SetScreen(mainMenuScreen);
+    }
+
+    /* ------ LOBBY BROWSER SCREEN ------ */
+
+
+    GameObject CreateLobbyButton()
+    {
+        // Instatiate a new lobby button and make it a child of the lobbyListContainer.
+        GameObject lobbyButton = Instantiate(lobbyButtonPrefab, lobbyListContainer.transform);
+        // Add the new button to the lobbyList.
+        lobbyButtons.Add(lobbyButton);
+
+        return lobbyButton;
+    }
+
+    /// <summary>
+    /// Update the LobbyList on the LobbyBrowserScreen.
+    /// Setsup the buttons and their OnClickEvents.
+    /// </summary>
+    private void UpdateLobbyBrowserUI()
+    {
+        // Disable all the Lobby buttons.
+        foreach (GameObject button in lobbyButtons)
+        {
+            button.SetActive(false);
+        }
+
+        // Display all the Lobbies currently on the Master Server.
+        for (int i = 0; i < lobbyList.Count; i++)
+        {
+            // Check if Player get's or creates a button.
+            GameObject lobbyButton = i >= lobbyButtons.Count ? CreateLobbyButton() : lobbyButtons[i];
+
+            // Activate the lobby button.
+            lobbyButton.SetActive(true);
+
+            // Update the Lobby name and Player count text.
+            lobbyButton.transform.Find("LobbyNameText").GetComponent<TextMeshProUGUI>().text = lobbyList[i].Name;
+            lobbyButton.transform.Find("PlayerCounterText").GetComponent<TextMeshProUGUI>().text = lobbyList[i].PlayerCount + " / " + lobbyList[i].MaxPlayers;
+
+            // Set a reference to the Button Component.
+            Button ButtonComponent = lobbyButton.GetComponent<Button>();
+
+            // Store the Lobby name.
+            string lobbyName = lobbyList[i].Name;
+
+            // Remove all prior listeners from the Button to prevent stacking the Listeners.
+            ButtonComponent.onClick.RemoveAllListeners();
+            // Setup the Button OnClickEvent.
+            ButtonComponent.onClick.AddListener(() => { OnJoinLobbyButton(lobbyName); });
+            
+        }
+    }
+
+    /// <summary>
+    /// Join a Lobby.
+    /// </summary>
+    /// <param name="lobbyName">The Name of the Lobby to Join.</param>
+    public void OnJoinLobbyButton(string lobbyName)
+    {
+        NetworkController.instance.JoinLobby(lobbyName);
+    }
+
+    /// <summary>
+    /// Calls the UpdateLobbyBrowserUI method.
+    /// </summary>
+    public void OnRefreshButton()
+    {
+        UpdateLobbyBrowserUI();
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="allLobbies"></param>
+    public override void OnRoomListUpdate(List<RoomInfo> allLobbies)
+    {
+        lobbyList = allLobbies;
     }
 }
