@@ -88,6 +88,6 @@ public class CameraController : MonoBehaviour
     public void MakeSpectator()
     {
         isSpectator = true;
-        transform.parent = null;    // Disconnect the Camera from the Player.
+        transform.parent = null;    // Disconnect the Main Camera from the Player Object.
     }
 }

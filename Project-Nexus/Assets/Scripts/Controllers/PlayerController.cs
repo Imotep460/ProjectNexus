@@ -123,7 +123,6 @@ public class PlayerController : MonoBehaviourPun
         }
 
         currentHealth -= damageAmount;      // Damage the Player.
-        Debug.Log("Player damaged! CurrentHealth is: " + currentHealth);
         currentAttackerId = attackerId;     // Update the currentAttackerId.
 
         // Flash the player in a different color to indicate damage being done. Player is Flash on remotePlayers not on the Local instance of the Game.
@@ -191,14 +190,14 @@ public class PlayerController : MonoBehaviourPun
             if (currentAttackerId != 0)
             {
                 GameManager.gameInstance.GetPlayer(currentAttackerId).photonView.RPC("AddKill", RpcTarget.All);
-
-                // Set the Camera to Spectator mode.
-                GetComponentInChildren<CameraController>().MakeSpectator();
-
-                // Disable the physics and hide the Player object.
-                rigidbody.isKinematic = true;
-                transform.position = new Vector3(0, -50, 0);    // Player is moved to 50 Unity Units below the Map.
             }
+
+            // Set the Camera to Spectator mode.
+            GetComponentInChildren<CameraController>().MakeSpectator();
+
+            // Disable the physics and hide the Player object.
+            rigidbody.isKinematic = true;
+            transform.position = new Vector3(0, -50, 0);    // Player is moved to 50 Unity Units below the Map.
         }
     }
 
