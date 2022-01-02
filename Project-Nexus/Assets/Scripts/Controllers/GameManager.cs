@@ -7,6 +7,8 @@ using System.Linq;
 
 public class GameManager : MonoBehaviourPun
 {
+    public float postGameTime;
+
     [Header("Players")]
     public string playerPrefabLocation;     // 
     public PlayerController[] players;      // Store the Players
@@ -35,12 +37,6 @@ public class GameManager : MonoBehaviourPun
 
         photonView.RPC("ImInGame", RpcTarget.AllBuffered);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
     
     [PunRPC]
@@ -90,5 +86,36 @@ public class GameManager : MonoBehaviourPun
     public PlayerController GetPlayer(GameObject playerObject)
     {
         return players.First(x => x.gameObject == playerObject);
+    }
+
+    public void CheckWinCondition()
+    {
+        // Check if local Player is the last Player alive.
+        if (alivePlayers == 1)
+        {
+            photonView.RPC("WinGame", RpcTarget.All, players.First(x => !x.isDead).playerId);
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// Method is remote-callable.
+    /// </summary>
+    /// <param name="WinningPlayerId"></param>
+    [PunRPC]
+    private void WinGame(int WinningPlayerId)
+    {
+        // Set the UI win text.
+
+        // Create a delay before returning to the MainMenu after the Game is won/over.
+        Invoke("GoBackToMainMenu", postGameTime);
+    }
+
+    /// <summary>
+    /// Return to the MainMenu Scene.
+    /// </summary>
+    private void GoBackToMainMenu()
+    {
+        NetworkController.instance.ChangeScene("MainMenu");
     }
 }

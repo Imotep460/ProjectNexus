@@ -175,6 +175,41 @@ public class PlayerController : MonoBehaviourPun
     [PunRPC]
     private void PlayerDie()
     {
+        currentHealth = 0;
+        isDead = true;
 
+        GameManager.gameInstance.alivePlayers--;
+
+        // Have the Master Client/Game Host check the win condition.
+        if (PhotonNetwork.IsMasterClient)
+            GameManager.gameInstance.CheckWinCondition();
+
+        // Check if the Local Player is the Player that died.
+        if (photonView.IsMine)
+        {
+            // Check to make sure Player died to another Player and not the forcefield.
+            if (currentAttackerId != 0)
+            {
+                GameManager.gameInstance.GetPlayer(currentAttackerId).photonView.RPC("AddKill", RpcTarget.All);
+
+                // Set the Camera to Spectator mode.
+                GetComponentInChildren<CameraController>().MakeSpectator();
+
+                // Disable the physics and hide the Player object.
+                rigidbody.isKinematic = true;
+                transform.position = new Vector3(0, -50, 0);    // Player is moved to 50 Unity Units below the Map.
+            }
+        }
+    }
+
+    /// <summary>
+    /// Add a kill to a Players Kills count.
+    /// </summary>
+    [PunRPC]
+    public void AddKill()
+    {
+        playerKills++;
+
+        // Update the UI to reflect the Player getting a kill.
     }
 }

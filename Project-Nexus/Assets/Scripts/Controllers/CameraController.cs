@@ -81,4 +81,13 @@ public class CameraController : MonoBehaviour
             transform.parent.rotation = Quaternion.Euler(0, currentXRot, 0);
         }
     }
+
+    /// <summary>
+    /// Make the Player a Spectator
+    /// </summary>
+    public void MakeSpectator()
+    {
+        isSpectator = true;
+        transform.parent = null;    // Disconnect the Camera from the Player.
+    }
 }
