@@ -211,4 +211,14 @@ public class PlayerController : MonoBehaviourPun
 
         // Update the UI to reflect the Player getting a kill.
     }
+
+    [PunRPC]
+    public void HealPlayer(int amountToHeal)
+    {
+        // Heal the Play and make sure that the Player cannot get more that the Players allowed maxHealth.
+        currentHealth = Mathf.Min(currentHealth + amountToHeal, maxHealth);
+
+        // Update the health bar in the Game UI.
+
+    }
 }

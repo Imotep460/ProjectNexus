@@ -50,6 +50,8 @@ MonoBehaviour:
   - AddKill
   - WinGame
   - Die
+  - GiveAmmunition
+  - HealPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

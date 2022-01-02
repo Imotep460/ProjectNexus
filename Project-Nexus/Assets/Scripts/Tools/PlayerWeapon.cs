@@ -60,4 +60,16 @@ public class PlayerWeapon : MonoBehaviour
         bulletScript.Initialize(weaponDamage, player.playerId, player.photonView.IsMine);
         bulletScript.rigidbody.velocity = bulletDirection * bulletSpeed;
     }
+
+    /// <summary>
+    /// Give a Player more ammunition.
+    /// </summary>
+    /// <param name="ammunitionToGive">Amount of ammunition to give to the Player.</param>
+    [PunRPC]
+    public void GiveAmmunition(int ammunitionToGive)
+    {
+        currentAmmo = Mathf.Min(currentAmmo + ammunitionToGive, maxAmmo);
+
+        // Update the Ammunition text in the UI
+    }
 }
