@@ -8,19 +8,28 @@ public class PlayerController : MonoBehaviourPun
 {
     [Header("PlayerInfo")]
     public int playerId;
+    private int currentAttackerId; // The Id of teh Player Object currently attacking the local Player.
 
     [Header("PlayerStats")]
     public float playerMoveSpeed;
     public float playerJumpForce;
+    public int currentHealth;
+    public int maxHealth;
+    public int playerKills;
+    public bool isDead;
+
+    private bool flashingDamage; // Have the localPlayer flash a different color when it's being hit.
 
     [Header("PlayerComponents")]
     public Rigidbody rigidbody;
     public Player photonPlayer;
+    public PlayerWeapon playerWeapon;
+    public MeshRenderer meshRenderer;
 
     /// <summary>
-    /// 
+    /// Initialize a Player Object
     /// </summary>
-    /// <param name="player"></param>
+    /// <param name="player">The reference for the Player Object to Initialize.</param>
     [PunRPC]
     public void Initialize(Player player)
     {
@@ -46,6 +55,13 @@ public class PlayerController : MonoBehaviourPun
     // Update is called every frame.
     private void Update()
     {
+        // Check if this is the local photonView, or if the Player is dead.
+        if (!photonView.IsMine || isDead)
+        {
+            // Return out of the Update method without doing anything if this is not the local photonView.
+            return;
+        }
+
         // Move the Player Object
         MovePlayer();
 
@@ -53,6 +69,11 @@ public class PlayerController : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.Space))
         {
             TryPlayerJump();
+        }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            playerWeapon.TryShoot();
         }
     }
 
@@ -85,5 +106,75 @@ public class PlayerController : MonoBehaviourPun
             // If the ray fired hit something we can jump
             rigidbody.AddForce(Vector3.up * playerJumpForce, ForceMode.Impulse);
         }
+    }
+
+    /// <summary>
+    /// Player Object takes damage
+    /// </summary>
+    /// <param name="attackerId">Reference for the Unique Id of the Player attacking the LocalPlayer.</param>
+    /// <param name="damageAmount">The amount of damage being taken by the local Player.</param>
+    [PunRPC]
+    public void TakeDamage(int attackerId, int damageAmount)
+    {
+        // make sure that if the Player is dead the Player does not take damage.
+        if (isDead)
+        {
+            return;
+        }
+
+        currentHealth -= damageAmount;      // Damage the Player.
+        Debug.Log("Player damaged! CurrentHealth is: " + currentHealth);
+        currentAttackerId = attackerId;     // Update the currentAttackerId.
+
+        // Flash the player in a different color to indicate damage being done. Player is Flash on remotePlayers not on the Local instance of the Game.
+        photonView.RPC("FlashPlayer", RpcTarget.Others);
+
+        // Update the HealtBar in the UI.
+
+
+        // Die/Destroy the Player if the Health drops to zero or below.
+        if (currentHealth <= 0)
+        {
+            photonView.RPC("PlayerDie", RpcTarget.All);
+        }
+    }
+
+    /// <summary>
+    /// Briefly change the color of the local Player if the Local Player has been hit and is taking damage.
+    /// </summary>
+    [PunRPC]
+    private void FlashPlayer()
+    {
+        // Check if Player is already flashing to prevent overlapping.
+        if (flashingDamage)
+        {
+            return;
+        }
+
+        StartCoroutine(PlayerDamageFlashCorutine());
+
+        // Setup a corutine
+        IEnumerator PlayerDamageFlashCorutine ()
+        {
+            flashingDamage = true;
+
+            Color defaultColor = meshRenderer.material.color;   // Keep a refrence to the Players Default color.
+            meshRenderer.material.color = Color.black;          // Change the color of the Player.
+
+            yield return new WaitForSeconds(0.05f);             // Pause the method.
+
+            meshRenderer.material.color = defaultColor;         // Change back to the default color.
+
+            flashingDamage = false;
+        }
+    }
+
+    /// <summary>
+    /// Destroy a Player object.
+    /// </summary>
+    [PunRPC]
+    private void PlayerDie()
+    {
+
     }
 }

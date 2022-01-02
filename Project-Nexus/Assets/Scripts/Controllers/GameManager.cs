@@ -58,6 +58,10 @@ public class GameManager : MonoBehaviourPun
 
     }
 
+    /// <summary>
+    /// Spawn in a Player.
+    /// Method is remote-callable.
+    /// </summary>
     [PunRPC]
     private void SpawnPlayer()
     {
@@ -66,5 +70,25 @@ public class GameManager : MonoBehaviourPun
 
         // Initialize the Player for all the Players.
         playerObject.GetComponent<PlayerController>().photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
+    }
+
+    /// <summary>
+    /// Get a reference to a Player Object.
+    /// </summary>
+    /// <param name="playerId">The Player being referenced.</param>
+    /// <returns>Returns a Player Object.</returns>
+    public PlayerController GetPlayer(int playerId)
+    {
+        return players.First(x => x.playerId == playerId);
+    }
+
+    /// <summary>
+    /// Get a reference to a Player based of a Player Object.
+    /// </summary>
+    /// <param name="playerObject">The Player Object being referenced.</param>
+    /// <returns>Return a Player Object.</returns>
+    public PlayerController GetPlayer(GameObject playerObject)
+    {
+        return players.First(x => x.gameObject == playerObject);
     }
 }
