@@ -86,4 +86,31 @@ public class NetworkController : MonoBehaviourPunCallbacks
     {
         PhotonNetwork.LoadLevel(sceneName); // Load a new Scene.
     }
+
+    /// <summary>
+    /// Called when a Player disconnects from Photon.
+    /// </summary>
+    /// <param name="cause"></param>
+    public override void OnDisconnected(DisconnectCause cause)
+    {
+        PhotonNetwork.LoadLevel("MainMenu");
+    }
+
+    /// <summary>
+    /// Update the UI for all the Players in the Battle.
+    /// </summary>
+    /// <param name="otherPlayer"></param>
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        // Subtract a Player from alivePlayers.
+        GameManager.gameInstance.alivePlayers--;
+        // Update the BattleUI
+        BattleUI.uIInstance.UpdateBattleInfoText();
+
+        // Check if the player is the MasterClient.
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameManager.gameInstance.CheckWinCondition();
+        }
+    }
 }

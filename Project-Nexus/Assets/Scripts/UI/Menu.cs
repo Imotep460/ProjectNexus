@@ -12,8 +12,8 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     [Header("Screens")]
     public GameObject mainMenuScreen;
     public GameObject createLobbyScreen;
-    public GameObject LobbyScreen;
-    public GameObject LobbyBrowserScreen;
+    public GameObject lobbyScreen;
+    public GameObject lobbyBrowserScreen;
 
     // Reference the Menu variables.
     [Header("Main Screen")]
@@ -45,6 +45,8 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         if (PhotonNetwork.InRoom)
         {
             // Return the Player to the Lobby.
+            SetScreen(lobbyScreen);
+            UpdateLobbyUI();
 
             // Make the Lobby visible in the LobbyListScreen also make sure that the Lobby is open so people can join the Lobby.
             PhotonNetwork.CurrentRoom.IsVisible = true;
@@ -61,14 +63,14 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         // Disable all the Screens.
         mainMenuScreen.SetActive(false);
         createLobbyScreen.SetActive(false);
-        LobbyScreen.SetActive(false);
-        LobbyBrowserScreen.SetActive(false);
+        lobbyScreen.SetActive(false);
+        lobbyBrowserScreen.SetActive(false);
 
         // Enable the target screen.
         targetScreen.SetActive(true);
 
         // If a Player moves to the LobbyBrowserScreen automatically Update the LobbyBrowser UI
-        if (targetScreen == LobbyBrowserScreen)
+        if (targetScreen == lobbyBrowserScreen)
         {
             UpdateLobbyBrowserUI();
         }
@@ -106,7 +108,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     /// </summary>
     public void OnFindLobbyButton()
     {
-        SetScreen(LobbyBrowserScreen);
+        SetScreen(lobbyBrowserScreen);
     }
 
     /// <summary>
@@ -134,7 +136,7 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     /// </summary>
     public override void OnJoinedRoom()
     {
-        SetScreen(LobbyScreen);
+        SetScreen(lobbyScreen);
         // When the Player has joined a Lobby tell all the other Players to update their LobbyUi.
         photonView.RPC("UpdateLobbyUI", RpcTarget.All);
     }

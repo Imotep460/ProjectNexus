@@ -75,7 +75,15 @@ public class GameManager : MonoBehaviourPun
     /// <returns>Returns a Player Object.</returns>
     public PlayerController GetPlayer(int playerId)
     {
-        return players.First(x => x.playerId == playerId);
+        foreach (PlayerController player in players)
+        {
+            if (player != null && player.playerId == playerId)
+            {
+                return player;
+            }
+        }
+
+        return null;
     }
 
     /// <summary>
@@ -85,7 +93,16 @@ public class GameManager : MonoBehaviourPun
     /// <returns>Return a Player Object.</returns>
     public PlayerController GetPlayer(GameObject playerObject)
     {
-        return players.First(x => x.gameObject == playerObject);
+        //return players.First(x => x.gameObject == playerObject);
+        foreach (PlayerController player in players)
+        {
+            if (player != null && player.gameObject == playerObject)
+            {
+                return player;
+            }
+        }
+
+        return null;
     }
 
     public void CheckWinCondition()
@@ -98,7 +115,8 @@ public class GameManager : MonoBehaviourPun
     }
 
     /// <summary>
-    /// 
+    /// Update the BattleUI to reflect that a Player has won the game.
+    /// after a set amount of time return the Players to the Lobby.
     /// Method is remote-callable.
     /// </summary>
     /// <param name="WinningPlayerId"></param>

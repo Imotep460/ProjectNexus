@@ -4753,8 +4753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuScreen: {fileID: 1443266441}
   createLobbyScreen: {fileID: 880280292}
-  LobbyScreen: {fileID: 1908587273}
-  LobbyBrowserScreen: {fileID: 1013004045}
+  lobbyScreen: {fileID: 1908587273}
+  lobbyBrowserScreen: {fileID: 1013004045}
   createLobbyButton: {fileID: 838591646}
   findLobbyButton: {fileID: 652780812}
   playerListText: {fileID: 1480211109}
