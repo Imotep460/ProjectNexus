@@ -19,6 +19,7 @@ public class PlayerWeapon : MonoBehaviour
     [Header("Components")]
     public GameObject bulletPrefab;
     public Transform bulletSpawnPosition;
+
     private PlayerController player;
 
     private void Awake()
@@ -39,6 +40,7 @@ public class PlayerWeapon : MonoBehaviour
         lastShotTime = Time.time;
 
         // Update the Ammo indicator in the UI.
+        BattleUI.uIInstance.UpdateAmmoText();
 
         // Spawn the Bullet. Bullet is spawned for all Players. Method is called on all the remote clients.
         player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPosition.position, Camera.main.transform.forward);
@@ -71,5 +73,6 @@ public class PlayerWeapon : MonoBehaviour
         currentAmmo = Mathf.Min(currentAmmo + ammunitionToGive, maxAmmo);
 
         // Update the Ammunition text in the UI
+        BattleUI.uIInstance.UpdateAmmoText();
     }
 }

@@ -49,6 +49,10 @@ public class PlayerController : MonoBehaviourPun
             // Disable the physics on the remote Player object.
             rigidbody.isKinematic = true;
         }
+        else
+        {
+            BattleUI.uIInstance.InitializeUI(this);
+        }
     }
 
 
@@ -129,7 +133,7 @@ public class PlayerController : MonoBehaviourPun
         photonView.RPC("FlashPlayer", RpcTarget.Others);
 
         // Update the HealtBar in the UI.
-
+        BattleUI.uIInstance.UpdateHealthBar();
 
         // Die/Destroy the Player if the Health drops to zero or below.
         if (currentHealth <= 0)
@@ -210,6 +214,7 @@ public class PlayerController : MonoBehaviourPun
         playerKills++;
 
         // Update the UI to reflect the Player getting a kill.
+        BattleUI.uIInstance.UpdateBattleInfoText();
     }
 
     [PunRPC]
@@ -219,6 +224,6 @@ public class PlayerController : MonoBehaviourPun
         currentHealth = Mathf.Min(currentHealth + amountToHeal, maxHealth);
 
         // Update the health bar in the Game UI.
-
+        BattleUI.uIInstance.UpdateHealthBar();
     }
 }

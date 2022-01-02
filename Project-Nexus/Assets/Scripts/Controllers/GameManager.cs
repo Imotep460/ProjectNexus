@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviourPun
     private void WinGame(int WinningPlayerId)
     {
         // Set the UI win text.
+        BattleUI.uIInstance.SetWinText(GetPlayer(WinningPlayerId).photonPlayer.NickName);
 
         // Create a delay before returning to the MainMenu after the Game is won/over.
         Invoke("GoBackToMainMenu", postGameTime);
