@@ -547,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponDamage: 10
-  currentAmmo: 50
+  currentAmmo: 0
   maxAmmo: 50
   bulletSpeed: 20
   fireRate: 0.2
