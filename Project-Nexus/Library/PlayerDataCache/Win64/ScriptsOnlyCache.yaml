@@ -106,6 +106,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 196
       Script: {instanceID: 0}
+    - Class: 213
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
@@ -678,7 +680,7 @@ ScriptsOnlyBuild:
     className: EventTrigger
   - hash:
       serializedVersion: 2
-      Hash: 2fb15f70fa3d9c08907fe7b5f6358754
+      Hash: 8d096e10dbb95d92c22403ef57b84465
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Menu
@@ -932,4 +934,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Battlefield.unity
-  playerPath: C:/Users/hasse/Desktop/BaProject/Project-Nexus.exe
+  playerPath: C:/Users/hasse/Desktop/BAProjectGame-ProjectNexus/Project-Nexus.exe
