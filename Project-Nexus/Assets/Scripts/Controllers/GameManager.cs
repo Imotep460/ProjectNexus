@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviourPun
     /// </summary>
     private void GoBackToMainMenu()
     {
+        Destroy(NetworkController.instance); // Avoids dublicating the NetworkController.
         NetworkController.instance.ChangeScene("MainMenu");
     }
 }
