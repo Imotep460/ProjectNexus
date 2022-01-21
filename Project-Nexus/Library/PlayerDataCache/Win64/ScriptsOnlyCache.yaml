@@ -6,6 +6,7 @@ ScriptsOnlyBuild:
     - CameraController
     - ForceField
     - GameManager
+    - GameMenuController
     - Menu
     - NetworkController
     - Pickup
@@ -20,6 +21,7 @@ ScriptsOnlyBuild:
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro.dll:
+    - TMPro.TMP_Dropdown
     - TMPro.TMP_FontAsset
     - TMPro.TMP_InputField
     - TMPro.TMP_Settings
@@ -39,10 +41,13 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.HorizontalLayoutGroup
     - UnityEngine.UI.Image
     - UnityEngine.UI.LayoutElement
+    - UnityEngine.UI.Mask
     - UnityEngine.UI.RectMask2D
     - UnityEngine.UI.ScrollRect
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Slider
+    - UnityEngine.UI.Text
+    - UnityEngine.UI.Toggle
     - UnityEngine.UI.VerticalLayoutGroup
   sceneClasses:
     Assets/Scenes/Battlefield.unity:
@@ -64,6 +69,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -73,29 +80,45 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1478}
     - Class: 114
+      Script: {instanceID: 1626}
+    - Class: 114
       Script: {instanceID: 1684}
     - Class: 114
       Script: {instanceID: 1768}
     - Class: 114
       Script: {instanceID: 1806}
     - Class: 114
+      Script: {instanceID: 2074}
+    - Class: 114
       Script: {instanceID: 2378}
     - Class: 114
       Script: {instanceID: 2498}
+    - Class: 114
+      Script: {instanceID: 2508}
     - Class: 114
       Script: {instanceID: 2542}
     - Class: 114
       Script: {instanceID: 2572}
     - Class: 114
-      Script: {instanceID: 2674}
+      Script: {instanceID: 2590}
     - Class: 114
-      Script: {instanceID: 2866}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 4012}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 4626}
+      Script: {instanceID: 2882}
+    - Class: 114
+      Script: {instanceID: 2958}
+    - Class: 114
+      Script: {instanceID: 3718}
+    - Class: 114
+      Script: {instanceID: 3870}
+    - Class: 114
+      Script: {instanceID: 4014}
+    - Class: 114
+      Script: {instanceID: 4628}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -113,6 +136,12 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 241
+      Script: {instanceID: 0}
+    - Class: 243
+      Script: {instanceID: 0}
+    - Class: 245
       Script: {instanceID: 0}
     - Class: 258
       Script: {instanceID: 0}
@@ -164,6 +193,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2064}
     - Class: 114
+      Script: {instanceID: 2074}
+    - Class: 114
       Script: {instanceID: 2378}
     - Class: 114
       Script: {instanceID: 2438}
@@ -174,35 +205,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2542}
     - Class: 114
-      Script: {instanceID: 2674}
+      Script: {instanceID: 2676}
     - Class: 114
-      Script: {instanceID: 2704}
+      Script: {instanceID: 2706}
     - Class: 114
-      Script: {instanceID: 2866}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 2874}
+      Script: {instanceID: 2876}
     - Class: 114
-      Script: {instanceID: 2880}
+      Script: {instanceID: 2882}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2958}
     - Class: 114
-      Script: {instanceID: 3226}
+      Script: {instanceID: 3228}
     - Class: 114
-      Script: {instanceID: 3302}
+      Script: {instanceID: 3304}
     - Class: 114
-      Script: {instanceID: 3502}
+      Script: {instanceID: 3504}
     - Class: 114
-      Script: {instanceID: 3868}
+      Script: {instanceID: 3870}
     - Class: 114
-      Script: {instanceID: 3946}
+      Script: {instanceID: 3948}
     - Class: 114
-      Script: {instanceID: 3964}
-    - Class: 114
-      Script: {instanceID: 4244}
+      Script: {instanceID: 3966}
     - Class: 114
       Script: {instanceID: 4246}
     - Class: 114
-      Script: {instanceID: 4374}
+      Script: {instanceID: 4248}
+    - Class: 114
+      Script: {instanceID: 4376}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -450,6 +481,12 @@ ScriptsOnlyBuild:
     assemblyName: PhotonUnityNetworking.dll
     namespaceName: Photon.Pun
     className: PhotonRigidbody2DView
+  - hash:
+      serializedVersion: 2
+      Hash: 87982b761adecbcfa855bad26127c831
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameMenuController
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f

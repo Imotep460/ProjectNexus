@@ -267,4 +267,12 @@ public class Menu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         lobbyList = allLobbies;
     }
+
+    /// <summary>
+    /// Shutdown the game.
+    /// </summary>
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 }

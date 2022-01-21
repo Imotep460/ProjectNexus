@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviourPun
 
         // Calculate a vector direction.
         Vector3 moveDirection = (transform.forward * zMove + transform.right * xMove) * playerMoveSpeed;
-        moveDirection.y = rigidbody.velocity.y; // Set the y direction to equal the current velocity of the rigidbody component on the Player obect.
+        moveDirection.y = rigidbody.velocity.y; // Set the y direction to equal the current velocity of the rigidbody component on the Player object.
 
         // Set the velocity of the rigidbody component on the Player object to the calculated moveDirection Vector3.
         rigidbody.velocity = moveDirection;

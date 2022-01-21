@@ -27,6 +27,7 @@ public class CameraController : MonoBehaviour
     // Start is called when the class is instantiated.
     private void Start()
     {
+        GameMenuController.MouseSense = 1;
         // Lock the Cursor to the center of the screen.
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -35,8 +36,8 @@ public class CameraController : MonoBehaviour
     private void LateUpdate()
     {
         // Get the Mouse inputs.
-        currentXRot += Input.GetAxis("Mouse X") * xSens;
-        currentYRot += Input.GetAxis("Mouse Y") * ySens;
+        currentXRot += Input.GetAxis("Mouse X") * (xSens * GameMenuController.MouseSense);
+        currentYRot += Input.GetAxis("Mouse Y") * (ySens * GameMenuController.MouseSense);
 
         // Clamp the verticle rotation. This prevents the controls from flipping incase a Player looks directly in the air.
         currentYRot = Mathf.Clamp(currentYRot, yMin, yMax);
