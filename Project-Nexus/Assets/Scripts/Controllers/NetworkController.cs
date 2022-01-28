@@ -90,7 +90,7 @@ public class NetworkController : MonoBehaviourPunCallbacks
     /// <summary>
     /// Called when a Player disconnects from Photon.
     /// </summary>
-    /// <param name="cause"></param>
+    /// <param name="cause">.</param>
     public override void OnDisconnected(DisconnectCause cause)
     {
         PhotonNetwork.LoadLevel("MainMenu");
