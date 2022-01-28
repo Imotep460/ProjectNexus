@@ -60,7 +60,7 @@ public class NetworkController : MonoBehaviourPunCallbacks
         RoomOptions lobbyOptions = new RoomOptions();
         lobbyOptions.MaxPlayers = (byte)maxPlayers;         // Set the maximum Player count.
                                                             // NOTE; most of the data set through Photon,
-                                                            // and over the network is sent as byte thush we needto cast "maxPlayers" as a byte.
+                                                            // and over the network is sent as byte thus we need to cast "maxPlayers" as a byte.
 
         PhotonNetwork.CreateRoom(lobbyName, lobbyOptions);  // Create the Lobby with the specified lobby options.
     }

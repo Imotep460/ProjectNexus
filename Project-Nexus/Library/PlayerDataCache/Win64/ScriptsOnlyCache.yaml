@@ -971,4 +971,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Battlefield.unity
-  playerPath: C:/Users/hasse/Desktop/BAProjectGame-ProjectNexus/Project-Nexus.exe
+  playerPath: E:/BA Project/Projektfiler/ProjektDemo/Project-Nexus.exe
