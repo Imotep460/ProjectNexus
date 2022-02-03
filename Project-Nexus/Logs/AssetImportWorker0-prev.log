@@ -1,13 +1,19 @@
 Using pre-set license
 Built from '2020.3/staging' branch; Version is '2020.3.25f1 (9b9180224418) revision 10195328'; Using compiler version '192528614'; Build Type 'Release'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 OS: 'Windows 10  (10.0.18363) 64bit Education' Language: 'da' Physical Memory: 16251 MB
 BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
 
 COMMAND LINE ARGUMENTS:
 C:\Program Files\Unity\Hub\Editor\2020.3.25f1\Editor\Unity.exe
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 OS: 'Windows 10  (10.0.19042) 64bit Professional' Language: 'da' Physical Memory: 16314 MB
@@ -16,6 +22,10 @@ BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, I
 COMMAND LINE ARGUMENTS:
 C:\Program Files (x86)\Unity\2020.3.25f1\Editor\Unity.exe
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
@@ -30,7 +40,10 @@ C:/Users/hasse/source/repos/Imotep460/ProjectNexus/Project-Nexus
 Logs/AssetImportWorker0.log
 -srvPort
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 55344
 Successfully changed project path to: C:/Users/hasse/source/repos/Imotep460/ProjectNexus/Project-Nexus
@@ -40,6 +53,9 @@ Refreshing native plugins compatible for Editor in 223.43 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.25f1 (9b9180224418)
 [Subsystems] Discovering subsystems at path C:/Program Files/Unity/Hub/Editor/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 60581
@@ -51,6 +67,10 @@ Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 2020.3.25f1 (9b9180224418)
 [Subsystems] Discovering subsystems at path C:/Program Files (x86)/Unity/2020.3.25f1/Editor/Data/Resources/UnitySubsystems
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
@@ -59,7 +79,10 @@ GfxDevice: creating device client; threaded=0
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
     Renderer: NVIDIA GeForce GTX 1650 Ti (ID=0x1f95)
     Vendor:   
@@ -82,6 +105,9 @@ Mono: successfully reloaded assembly
 Domain Reload Profiling:
 	ReloadAssembly (2078ms)
 		BeginReloadAssembly (216ms)
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
     Renderer: NVIDIA GeForce GTX 1080 (ID=0x1b80)
@@ -106,6 +132,10 @@ Domain Reload Profiling:
 	ReloadAssembly (797ms)
 		BeginReloadAssembly (66ms)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
@@ -115,7 +145,10 @@ Domain Reload Profiling:
 			ReleaseScriptingObjects (0ms)
 			CreateAndSetChildDomain (1ms)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 		EndReloadAssembly (1217ms)
 			LoadAssemblies (216ms)
@@ -131,6 +164,9 @@ Domain Reload Profiling:
 				BeforeProcessingInitializeOnLoad (19ms)
 				ProcessInitializeOnLoadAttributes (117ms)
 				ProcessInitializeOnLoadMethodAttributes (41ms)
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 		EndReloadAssembly (630ms)
@@ -148,6 +184,10 @@ Domain Reload Profiling:
 				ProcessInitializeOnLoadAttributes (87ms)
 				ProcessInitializeOnLoadMethodAttributes (32ms)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
@@ -158,7 +198,10 @@ Domain Reload Profiling:
 Platform modules already initialized, skipping
 Registering precompiled user dll's ...
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
 Registered in 0.007738 seconds.
 Begin MonoManager ReloadAssembly
@@ -205,6 +248,9 @@ System memory in use after: 74.9 MB.
 
 Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2041.
 Total: 7.284300 ms (FindLiveObjects: 0.452100 ms CreateObjectMapping: 0.413900 ms MarkObjects: 6.325100 ms  DeleteObjects: 0.088300 ms)
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 Registered in 0.009309 seconds.
@@ -253,6 +299,10 @@ System memory in use after: 74.9 MB.
 Unloading 25 unused Assets to reduce memory usage. Loaded Objects now: 2041.
 Total: 2.666500 ms (FindLiveObjects: 0.125800 ms CreateObjectMapping: 0.049600 ms MarkObjects: 2.419600 ms  DeleteObjects: 0.070200 ms)
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
@@ -265,11 +315,17 @@ AssetImportParameters requested are different than current active one (requested
   custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
   custom:video-codec-MediaFoundation-h265: 746d11721c4dcdbdad8f713fa42b33f4 -> 
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
@@ -277,12 +333,18 @@ AssetImportParameters requested are different than current active one (requested
 ========================================================================
 Received Import Request.
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 <<<<<<< HEAD
   path: Assets/Scripts/Controllers/GameMenuController.cs
   artifactKey: Guid(97fa5429aef95c947a817eb6bfe62213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
 Start importing Assets/Scripts/Controllers/GameMenuController.cs using Guid(97fa5429aef95c947a817eb6bfe62213) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '27f636ca980d2355de3d9ffebf3bfd54') in 0.212195 seconds 
   Import took 0.217081 seconds .
+=======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
   path: Assets/Scripts/Controllers/CameraController.cs
@@ -362,6 +424,10 @@ Received Import Request.
 Start importing Assets/Scripts/Controllers/GameManager.cs using Guid(4b4c637af6c69c74581e196b49832b40) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38a5aa6501e52274063c06c5031b8d22') in 0.008114 seconds 
   Import took 0.010719 seconds .
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
+>>>>>>> Stashed changes
 =======
 >>>>>>> 8188f7decffeac797a1cc617045f8fc392847a86
 >>>>>>> Stashed changes
