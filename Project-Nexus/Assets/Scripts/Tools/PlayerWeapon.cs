@@ -58,6 +58,13 @@ public class PlayerWeapon : MonoBehaviour
         // Get a reference to the Bullet Script.
         Bullet bulletScript = bulletObject.GetComponent<Bullet>();
 
+        // Reference the SphereCollider so that it can be guarenteed to be a trigger.
+        var bulletCollider = bulletObject.GetComponent<SphereCollider>();
+        bulletCollider.isTrigger = true;    // Make sure the SphereCollider is a trigger.
+        bulletCollider.radius = 0.5f;       // Because the SphereCollider's radius is calculated from the center of components relative space
+                                            // the radius of the SphereCollider needs to be 0.5f as the center of the SphereCollider is
+                                            // defaulting to the Center of the relative SphereCollider.
+
         // Initialize the Bullet and set it's velocity.
         bulletScript.Initialize(weaponDamage, player.playerId, player.photonView.IsMine);
         bulletScript.rigidbody.velocity = bulletDirection * bulletSpeed;
