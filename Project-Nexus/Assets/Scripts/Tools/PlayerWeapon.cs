@@ -28,6 +28,10 @@ public class PlayerWeapon : MonoBehaviour
         player = GetComponent<PlayerController>();
     }
 
+    /// <summary>
+    /// Forsøg at affyr et skud.
+    /// Metoden fejler og et skud bliver ikke affyret med mindre at der er gået nok tid siden sidste skud blev affyret.
+    /// </summary>
     public void TryShoot()
     {
         // Check if Player has enough ammunition to fire and the required time since last shot fired has passed.
@@ -46,7 +50,11 @@ public class PlayerWeapon : MonoBehaviour
         player.photonView.RPC("SpawnBullet", RpcTarget.All, bulletSpawnPosition.position, Camera.main.transform.forward);
     }
 
-
+    /// <summary>
+    /// Instatiates a Bullet object
+    /// </summary>
+    /// <param name="spawnPosition">The Position where the bullet is spawned.</param>
+    /// <param name="bulletDirection">The Direction the Bullet travels in.</param>
     [PunRPC]
     private void SpawnBullet(Vector3 spawnPosition, Vector3 bulletDirection)
     {
