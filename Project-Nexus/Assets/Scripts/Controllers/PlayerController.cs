@@ -129,7 +129,8 @@ public class PlayerController : MonoBehaviourPun
         currentHealth -= damageAmount;      // Damage the Player.
         currentAttackerId = attackerId;     // Update the currentAttackerId.
 
-        // Flash the player in a different color to indicate damage being done. Player is Flash on remotePlayers not on the Local instance of the Game.
+        // Flash the player in a different color to indicate damage being done.
+        // Player is flashing on remotePlayers not on the Local instance of the Game.
         photonView.RPC("FlashPlayer", RpcTarget.Others);
 
         // Update the HealtBar in the UI.
