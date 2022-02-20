@@ -17,6 +17,7 @@ public class PlayerWeapon : MonoBehaviour
     private float lastShotTime;
 
     [Header("Components")]
+    //public ObjectPoolController bulletPool;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPosition;
 
@@ -51,15 +52,21 @@ public class PlayerWeapon : MonoBehaviour
     }
 
     /// <summary>
-    /// Instatiates a Bullet object
+    /// Gets a bulletobject from the objectpool that holds the bullet objects.
+    /// Orient the bulletobject, and give it velocity.
+    /// Make sure that the SphereCollider on the bullet object is a trigger and that it has the correct radius,
+    /// Assign the bullet variables (weapondamage, playerid and make sure that the PhotonView knows that the local player fired the bullet.
     /// </summary>
     /// <param name="spawnPosition">The Position where the bullet is spawned.</param>
     /// <param name="bulletDirection">The Direction the Bullet travels in.</param>
     [PunRPC]
     private void SpawnBullet(Vector3 spawnPosition, Vector3 bulletDirection)
     {
-        // Spawn the bullet.
+        //Spawn the bullet.
         GameObject bulletObject = Instantiate(bulletPrefab, spawnPosition, Quaternion.identity);
+        // Get a bulletobject from the objectpool that holds the bullets.
+        //GameObject bulletObject = bulletPool.GetObjectFromPool();
+
         // Orient the bullet.
         bulletObject.transform.forward = bulletDirection;
 

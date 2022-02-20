@@ -76,6 +76,6 @@ public class BattleUI : MonoBehaviour
     public void SetWinText(string winnerName)
     {
         winBackground.gameObject.SetActive(true);   // Enable the win text background.
-        winText.text = winnerName + "Wins!!!";      // Update the win text to show the winner.
+        winText.text = winnerName + " Has Won The Match!!! Congratulations";      // Update the win text to show the winner.
     }
 }
