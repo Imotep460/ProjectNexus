@@ -4,9 +4,13 @@ using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
 using System.Linq;
+using System;
+using System.Data.SqlClient;
 
 public class GameManager : MonoBehaviourPun
 {
+    public string leaderboardConnectionString = "Data Source=HASSE-DESKTOP;Initial Catalog=ProjectNexus;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=True;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+    
     public float postGameTime;
 
     [Header("Players")]
@@ -62,7 +66,7 @@ public class GameManager : MonoBehaviourPun
     private void SpawnPlayer()
     {
         // Instantiate a Player Object.
-        GameObject playerObject = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
+        GameObject playerObject = PhotonNetwork.Instantiate(playerPrefabLocation, spawnPoints[UnityEngine.Random.Range(0, spawnPoints.Length)].position, Quaternion.identity);
 
         // Initialize the Player for all the Players.
         playerObject.GetComponent<PlayerController>().photonView.RPC("Initialize", RpcTarget.All, PhotonNetwork.LocalPlayer);
@@ -126,6 +130,14 @@ public class GameManager : MonoBehaviourPun
         // Set the UI win text.
         BattleUI.uIInstance.SetWinText(GetPlayer(WinningPlayerId).photonPlayer.NickName);
 
+        string playerNickName = GetPlayer(WinningPlayerId).photonPlayer.NickName;
+        string lobbyName = PhotonNetwork.CurrentRoom.Name;
+        int playerKills = players.First(x => !x.isDead).playerKills;
+        string gamePlayedDate = string.Format("{0}/{1}/{2} - {3}:{4}:{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+        string gameDuration = string.Format("{0} Minutes", Time.timeSinceLevelLoad / 60);
+
+        //photonView.RPC("PostToLeaderBoard", RpcTarget.MasterClient, playerNickName, lobbyName, playerKills, gamePlayedDate, gameDuration);
+
         // Create a delay before returning to the MainMenu after the Game is won/over.
         Invoke("GoBackToMainMenu", postGameTime);
     }
@@ -138,4 +150,40 @@ public class GameManager : MonoBehaviourPun
         Destroy(NetworkController.instance); // Avoids dublicating the NetworkController.
         NetworkController.instance.ChangeScene("MainMenu");
     }
+
+    //[PunRPC]
+    //public void PostToLeaderBoard(string playerNickName, string lobbyName, int playerKills, string gamePlayedDate, string gameDuration)
+    //{
+    //    StartCoroutine(PostSQL(playerNickName, lobbyName, playerKills, gamePlayedDate, gameDuration));
+    //}
+
+    //public IEnumerator PostSQL(string playerNickName, string lobbyName, int playerKills, string gamePlayedDate, string gameDuration)
+    //{
+
+    //    SqlConnection sqlConnection = new SqlConnection(leaderboardConnectionString);
+
+    //    try
+    //    {
+    //        sqlConnection.Open();
+    //        Debug.Log(sqlConnection.State);
+    //        SqlCommand sqlCommand = new SqlCommand("CreateLeaderboardPost", sqlConnection);
+
+    //        sqlCommand.Parameters.Add(new SqlParameter("@PlayerNickName", playerNickName));
+    //        sqlCommand.Parameters.Add(new SqlParameter("@LobbyName", lobbyName));
+    //        sqlCommand.Parameters.Add(new SqlParameter("@PlayerKills", playerKills));
+    //        sqlCommand.Parameters.Add(new SqlParameter("@GamePlayedDate", gamePlayedDate));
+    //        sqlCommand.Parameters.Add(new SqlParameter("@GameDuration", gameDuration));
+
+    //        sqlCommand.ExecuteNonQuery();
+    //        sqlConnection.Close();
+
+    //        Debug.Log("Entry created in the leaderboard database.");
+    //    }
+    //    catch (System.Exception _exception)
+    //    {
+    //        Debug.LogWarning("Could not post to the Leaderboard server! Please try again." + _exception);
+    //    }
+
+    //    yield return new WaitForSeconds(1);
+    //}
 }

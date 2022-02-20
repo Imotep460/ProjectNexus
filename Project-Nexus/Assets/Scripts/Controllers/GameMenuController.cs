@@ -107,6 +107,9 @@ public class GameMenuController : MonoBehaviour
         mouseSenseText.text = "Mouse Sense: " + Math.Round(MouseSense, 2);
     }
 
+    /// <summary>
+    /// Close the GameMenu and disable the mouse cursor in order to return to the game.
+    /// </summary>
     public void ResumeGame()
     {
         // Disable the mouse:

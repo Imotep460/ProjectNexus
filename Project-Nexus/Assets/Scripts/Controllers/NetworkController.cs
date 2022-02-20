@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Data;
+using System.Data.SqlClient;
 
 /// <summary>
 /// The NetworkController connects to the Photon Master Server.
