@@ -110,15 +110,15 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2960}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3722}
+      Script: {instanceID: 3724}
     - Class: 114
-      Script: {instanceID: 3874}
+      Script: {instanceID: 3876}
     - Class: 114
-      Script: {instanceID: 4018}
+      Script: {instanceID: 4020}
     - Class: 114
-      Script: {instanceID: 4634}
+      Script: {instanceID: 4636}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -215,25 +215,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2884}
     - Class: 114
-      Script: {instanceID: 2960}
+      Script: {instanceID: 2962}
     - Class: 114
-      Script: {instanceID: 3232}
+      Script: {instanceID: 3234}
     - Class: 114
-      Script: {instanceID: 3308}
+      Script: {instanceID: 3310}
     - Class: 114
-      Script: {instanceID: 3508}
+      Script: {instanceID: 3510}
     - Class: 114
-      Script: {instanceID: 3874}
+      Script: {instanceID: 3876}
     - Class: 114
-      Script: {instanceID: 3952}
+      Script: {instanceID: 3954}
     - Class: 114
-      Script: {instanceID: 3970}
-    - Class: 114
-      Script: {instanceID: 4250}
+      Script: {instanceID: 3972}
     - Class: 114
       Script: {instanceID: 4252}
     - Class: 114
-      Script: {instanceID: 4380}
+      Script: {instanceID: 4254}
+    - Class: 114
+      Script: {instanceID: 4382}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -589,6 +589,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
+  - hash:
+      serializedVersion: 2
+      Hash: 05182279541ec8f205c34612d89aaabd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EncryptionController
   - hash:
       serializedVersion: 2
       Hash: 0fd6822f6177297bd0eb4d83cc7a9030
@@ -957,7 +963,7 @@ ScriptsOnlyBuild:
     className: TouchInputModule
   - hash:
       serializedVersion: 2
-      Hash: 945968106aee7f0688ef5735da3567be
+      Hash: 6df40a694ab000f87bd8fbeab54da798
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -971,4 +977,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
   - Assets/Scenes/Battlefield.unity
-  playerPath: C:/Users/hasse/Desktop/BAProjectGame-ProjectNexus/ReExam/TestProject/Project-Nexus.exe
+  playerPath: C:/Users/hasse/Desktop/BAProjectGame-ProjectNexus/ReExam/TestProject2/Project-Nexus.exe

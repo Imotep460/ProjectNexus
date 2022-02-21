@@ -54,8 +54,6 @@ public class GameManager : MonoBehaviourPun
             // Use RPC to spawn the players.
             photonView.RPC("SpawnPlayer", RpcTarget.All);
         }
-
-
     }
 
     /// <summary>
@@ -130,11 +128,11 @@ public class GameManager : MonoBehaviourPun
         // Set the UI win text.
         BattleUI.uIInstance.SetWinText(GetPlayer(WinningPlayerId).photonPlayer.NickName);
 
-        string playerNickName = GetPlayer(WinningPlayerId).photonPlayer.NickName;
-        string lobbyName = PhotonNetwork.CurrentRoom.Name;
-        int playerKills = players.First(x => !x.isDead).playerKills;
-        string gamePlayedDate = string.Format("{0}/{1}/{2} - {3}:{4}:{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
-        string gameDuration = string.Format("{0} Minutes", Time.timeSinceLevelLoad / 60);
+        //string playerNickName = GetPlayer(WinningPlayerId).photonPlayer.NickName;
+        //string lobbyName = PhotonNetwork.CurrentRoom.Name;
+        //int playerKills = players.First(x => !x.isDead).playerKills;
+        //string gamePlayedDate = string.Format("{0}/{1}/{2} - {3}:{4}:{5}", DateTime.Now.Day, DateTime.Now.Month, DateTime.Now.Year, DateTime.Now.Hour, DateTime.Now.Minute, DateTime.Now.Second);
+        //string gameDuration = string.Format("{0} Minutes", Time.timeSinceLevelLoad / 60);
 
         //photonView.RPC("PostToLeaderBoard", RpcTarget.MasterClient, playerNickName, lobbyName, playerKills, gamePlayedDate, gameDuration);
 
