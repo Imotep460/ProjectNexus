@@ -13,7 +13,7 @@ using System.Data.SqlClient;
 /// </summary>
 public class NetworkController : MonoBehaviourPunCallbacks
 {
-    // NetworkController Variables
+    [Header("Maximum Players")]
     public int maxPlayers = 10;     // Maximum amount of player allowed on the server.
 
     /// <summary>
